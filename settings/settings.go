@@ -28,9 +28,4 @@ var Config = config.Configuration{
 	},
 }
 
-var GitHubClient = github.NewGitHub(
-	Config.GitHub.User,
-	Config.GitHub.Repository,
-	Config.GitHub.Token,
-	nil,
-)
+var GitHubClient *github.GitHub

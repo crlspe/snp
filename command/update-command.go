@@ -20,7 +20,6 @@ func (i *UpdateCommand) Init(flags model.Flags) {
 
 func (i *UpdateCommand) Exec() {
 	filesystem.CreateDirectoryIfNotExist(settings.Config.DataFolder)
-	settings.Config.ReadFile(settings.Config.GetConfigurationPath())
 	switch {
 	case *i.Flags.Local:
 		DownloadGithubDataFiles()

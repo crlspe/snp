@@ -3,8 +3,19 @@ package command
 import (
 	"os"
 
+	"github.com/crlspe/snp/github"
 	"github.com/crlspe/snp/model"
+	"github.com/crlspe/snp/settings"
 )
+
+func init() {
+	settings.GitHubClient = github.NewGitHub(
+		settings.Config.GitHub.User,
+		settings.Config.GitHub.Repository,
+		settings.Config.GitHub.Token,
+		nil,
+	)
+}
 
 type Command interface {
 	Init(flags model.Flags)
@@ -17,7 +28,7 @@ const (
 	Search CommandName = "search"
 	Add    CommandName = "add"
 	Update CommandName = "update"
-	Config   CommandName = "config"
+	Config CommandName = "config"
 )
 
 func GetCommand() Command {

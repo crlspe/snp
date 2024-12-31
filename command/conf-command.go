@@ -41,6 +41,5 @@ func InitGitHubConfiguration() {
 }
 
 func PrintConfigurations() {
-	settings.Config.ReadFile(settings.Config.GetConfigurationPath())
 	fmt.Println(settings.Config)
 }
