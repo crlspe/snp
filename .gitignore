@@ -1,5 +1,5 @@
 /snp
 /Makefile
 /snp-conf
-/vscode/
-/vscode/*
+/.vscode/
+/.vscode/*
