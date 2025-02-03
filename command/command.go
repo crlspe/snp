@@ -9,6 +9,7 @@ import (
 )
 
 func init() {
+	settings.Config.ReadFile(settings.Config.GetConfigurationPath())
 	settings.GitHubClient = github.NewGitHub(
 		settings.Config.GitHub.User,
 		settings.Config.GitHub.Repository,

@@ -1,12 +1,14 @@
 package command
 
 import (
+	"fmt"
+
 	"github.com/crlspe/snp/filesystem"
 	"github.com/crlspe/snp/model"
 	"github.com/crlspe/snp/settings"
 	forms "github.com/crlspe/snp/ui"
 
-	"golang.design/x/clipboard"
+	"github.com/atotto/clipboard"
 )
 
 type AddCommand struct {
@@ -28,7 +30,10 @@ func (a *AddCommand) Exec() {
 func (a *AddCommand) parseFlags() {
 	switch {
 	case *a.Flags.Clipboard:
-		var content = string(clipboard.Read(clipboard.FmtText))
+		var content, err = clipboard.ReadAll()
+		if err != nil {
+			fmt.Println(err)
+		}
 		a.Snippet.Code = content
 	}
 }

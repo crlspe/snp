@@ -54,7 +54,7 @@ func formatFileName(fileName string) string {
 }
 
 func formatSection(section, separator string) string {
-	return strings.ReplaceAll(section, " ", separator)
+	return strings.ReplaceAll(strings.TrimSpace(section), " ", separator)
 }
 
 func ReadSnippetHeader(filePath string) (string, error) {

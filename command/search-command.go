@@ -12,8 +12,8 @@ import (
 	"github.com/crlspe/snp/logging"
 	"github.com/crlspe/snp/model"
 
+	"github.com/atotto/clipboard"
 	"github.com/rivo/tview"
-	"golang.design/x/clipboard"
 )
 
 type SearchCommand struct {
@@ -74,11 +74,7 @@ func ShowResults(searchResults []string) {
 
 func copyToClipboard(mainText string) {
 	if mainText != "Quit" {
-		err := clipboard.Init()
-		if err != nil {
-			panic(err)
-		}
-		clipboard.Write(clipboard.FmtText, []byte(mainText))
+		clipboard.WriteAll(mainText)
 		<-time.After(200 * time.Millisecond)
 		logging.Debug("'%s' has been copied to clipboard.", mainText)
 	}
